@@ -469,7 +469,7 @@ body {
   width: 900px;
   // width: 100%;
 
-  height: 353px;
+  height: 453px;
   position: relative;
   overflow: hidden;
 
@@ -536,7 +536,7 @@ body {
   // width: 64.2rem;
   width: 900px;
 
-  height: 18.8rem;
+  height: 15.8rem;
   overflow: hidden;
   // background-color: #fff;
 
@@ -548,7 +548,7 @@ body {
     // background: aqua;
     border-radius: .5rem;
     margin: 1rem 1rem 1rem 1rem;
-    width: 31.3%;
+    width: 25.3%;
     border-right: 1px solid #cad5d5;
     background-color: orange;
     // margin-left: 0.4rem;
@@ -556,6 +556,10 @@ body {
     overflow: hidden;
     outline: none;
 
+    img {
+      width: 100%;
+      height: 100%;
+    }
 
     &:hover {
       transform: scale(1.1);
@@ -583,10 +587,22 @@ body {
 
 }
 
+.imgCarousal {
+  h3 {
+    font-size: 2.6rem;
+    font-weight: 800;
+  }
+
+  p {
+    color: #cad5d5;
+    font-size: 1.6rem;
+  }
+}
+
 //ads bar section
 
 .ads-bar {
-  height: 55.1rem;
+  height: 65.1rem;
   width: 37.4rem;
   background: #fff;
   padding-bottom: 3rem;
@@ -828,7 +844,7 @@ body {
 
   .product-card-container {
 
-    width: 35rem;
+    width: 36rem;
     height: 20rem;
     padding: 1rem;
     display: flex;
@@ -837,7 +853,7 @@ body {
     border-right: 0.00000000001rem solid #cad5d5;
 
     .product-image {
-      width: 20.1rem;
+      width: 21.1rem;
       height: 18rem;
 
 
@@ -3603,6 +3619,17 @@ about Ends Here
   Footer Ends Here
 ////////////////*/
 
+.bTNs {
+  width: 23rem;
+  margin: 1rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  padding: 2rem 4rem;
+  border-radius: 2.5rem;
+  border: none;
+  background-color: #FED700;
+  color: #FFF;
+}
 
 /*/////////////////
   Forbidden starts Here

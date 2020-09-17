@@ -68,8 +68,8 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
         return isAuthenticated() ? (
             <div>{showDropIn()}</div>
         ) : (
-                <Link to="/registerOrLogin">
-                    <button id='btn-s' className="bTn ">Sign in to checkout</button>
+                <Link to="/signin">
+                    <button id='btn-s' className="bTNs">Sign in to checkout</button>
                 </Link>
             );
     };
@@ -139,7 +139,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
                         <input onChange={handlePhone} value={data.phone} type="number" placeholder='Phone' />
 
                     </div>
-         
+
                     <div className="deliveryTextarea">
 
                         <label className="text-muted">Delivery address:</label>

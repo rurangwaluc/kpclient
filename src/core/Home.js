@@ -10,6 +10,7 @@ import Checkbox from "./Checkbox";
 import { addItem } from './cartHelpers';
 import Menu from './Menu'
 import Footer from './Footer'
+import ImageSlider from './Tools/ImageSlider'
 import img1 from '../img/phone1.jpg'
 import img2 from '../img/phone2.jpg'
 import img4 from '../img/a.jpg'
@@ -229,7 +230,7 @@ const Home = (props) => {
     <div>
       <a id="button" title="Back To Top"></a>
       <Menu />
-      
+
       <div className="main-home">
 
         <section className="categories">
@@ -251,36 +252,18 @@ const Home = (props) => {
         </section>
         <section className='slider-info'>
           <div className="slide-container">
-            <div className="slides">
-              <div className="slide">
-                <a href="https://www.google.com/" className="slide current"><img src={img8} alt="" /></a>
-              </div>
-              <div className="slide">
-                <a href="https://www.twitter.com/" className="slide"><img src={img5} alt="" /></a>
-              </div>
-              <div className="slide">
-                <a href="https://www.amazon.com/" className="slide"><img src={img6} alt="" /></a>
-              </div>
-              <div className="slide">
-                <a href="https://www.youtube.com/" className="slide"><img src={img7} alt="" /></a>
-              </div>
-              <div className="slide">
-                <a href="https://www.netflix.com/" className="slide"><img src={img8} alt="" /></a>
-              </div>
-              <div className="slide">
-                <a href="https://www.quora.com/" className="slide"><img src={img9} alt="" /></a>
-              </div>
+            {/* <div className="slides"> */}
+            <ImageSlider />
 
-
-            </div>
-            <div className="slide-controls">
+            {/* </div> */}
+            {/* <div className="slide-controls">
               <button id="prev-btn">
                 <i className="fas fa-chevron-left"></i>
               </button>
               <button id="next-btn">
                 <i className="fas fa-chevron-right"></i>
               </button>
-            </div>
+            </div> */}
           </div>
 
           <div className="other-categories">
