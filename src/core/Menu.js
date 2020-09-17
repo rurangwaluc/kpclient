@@ -9,7 +9,7 @@ const isActive = (history, path) => {
     if (history.location.pathname === path) {
         return { color: "#ff9900" };
     } else {
-        return { color: "#000" };
+        return { color: "#7c7c7c" };
     }
 };
 
@@ -154,7 +154,46 @@ const Menu = ({ history }) => (
 
 
         </div>
+        <div className="content-wrapper">
+            <nav className="navigation">
+                <div className="navigation-logo">
+                    <Link to="/">
 
+                        <h3>KPC</h3>
+
+                    </Link>
+                </div>
+
+
+                <Search />
+
+                <div className="navigation-links">
+
+
+
+                    <ul className="icons">
+                        <li>  <Link to="/" >Home</Link> </li>
+                        <li>  <Link
+                            style={isActive(history, "/shop")}
+                            to="/shop" >Shop</Link> </li>
+                        <li> <Link to="/WishList" title="WishList"><i className="far fa-heart"></i></Link></li>
+
+
+                        <li>
+                            <Link
+
+                                style={isActive(history, "/cart")}
+                                to="/cart"
+                                title="Cart"
+                            >
+                                <img src={img1} alt="" />
+                                <sup> <span className='item-count '>{itemTotal()}</span></sup>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </div>
 );
 

@@ -5,7 +5,6 @@ import { getCart } from './cartHelpers';
 import Card from './Card';
 import Checkout from './Checkout';
 import Menu from './Menu';
-import Navabar from './Navbar';
 
 const Cart = () => {
     const [items, setItems] = useState([]);
@@ -48,7 +47,6 @@ const Cart = () => {
     return (
         <div>
             <Menu />
-            <Navabar />
 
             <div className="productCart">
 

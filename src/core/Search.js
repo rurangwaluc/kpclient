@@ -67,15 +67,15 @@ const Search = () => {
     const searchedProducts = (results = []) => {
         return (
             <div className="row">
-                <div className=" shop-container  ">
+                <div className=" search-container  ">
                     <h2 className="mt-4 mb-4">
                         {searchMessage(searched, results)}
                     </h2>
 
-                    <div className=" " >
+                    <div className="searchprod " >
                         {results.map((product, i) => (
-                            <div className=" mb-3">
-                                <Card key={i} product={product} />
+                            <div key={i} className=" mb-3">
+                                <Card product={product} />
                             </div>
                         ))}
                     </div>

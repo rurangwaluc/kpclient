@@ -100,7 +100,6 @@ const Shop = () => {
     return (
         <div>
             <Menu />
-            <Navbar />
 
             <div className="shop-container ">
                 <div className="row mt-5" >

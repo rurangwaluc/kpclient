@@ -129,7 +129,7 @@ const AddProduct = (props) => {
     return (
         <div>
             <Menu />
-            <Navbar />
+
 
             <div className="addProductPage">
 

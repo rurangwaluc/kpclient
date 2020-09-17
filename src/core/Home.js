@@ -9,7 +9,6 @@ import { getProducts, getCategories, getFilteredProducts } from "./apiCore";
 import Checkbox from "./Checkbox";
 import { addItem } from './cartHelpers';
 import Menu from './Menu'
-import Navbar from './Navbar'
 import Footer from './Footer'
 import img1 from '../img/phone1.jpg'
 import img2 from '../img/phone2.jpg'
@@ -230,7 +229,7 @@ const Home = (props) => {
     <div>
       <a id="button" title="Back To Top"></a>
       <Menu />
-      <Navbar />
+      
       <div className="main-home">
 
         <section className="categories">

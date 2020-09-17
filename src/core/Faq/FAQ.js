@@ -1,7 +1,7 @@
 import React from 'react';
 import Accordion from "./Accordion";
 import Menu from '../Menu';
-import Navbar from '../Navbar';
+
 import Footer from '../Footer';
 
 
@@ -12,7 +12,7 @@ const FAQ = () => {
     <div>
 
       <Menu />
-      <Navbar />
+
 
       <div className='main-faq'>
 

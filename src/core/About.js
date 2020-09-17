@@ -14,8 +14,7 @@ const About = () => {
     <div>
 
       <Menu />
-      <Navbar />
-
+   
       <div className="about-header">
         <h3>About Us</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptate velit! Sed officiis nulla dignissimos non. Nam recusandae sed dignissimos quis maiores doloribus, officia blanditiis animi culpa eius aut eum.</p>
