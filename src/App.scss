@@ -188,6 +188,7 @@ body {
 
       input {
         width: 43.6rem;
+        height: 4.4rem;
         padding: 1.3rem 3rem;
         border: 2px solid #fed700;
         outline: #fed700;
@@ -219,6 +220,7 @@ body {
           font-size: 1.5rem;
           width: 100%;
           color: #000;
+          position: absolute;
 
           &:hover {
             cursor: pointer;

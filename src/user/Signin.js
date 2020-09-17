@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Link, Redirect } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
 import Menu from '../core/Menu';
-import Navbar from '../core/Navbar';
 import Footer from '../core/Footer'
 
 import { signin, authenticate, isAuthenticated } from "../auth";
@@ -112,7 +111,7 @@ const Signin = () => {
     return (
         <div>
             <Menu />
-            <Navbar />
+
             <div className='registerPage'>
 
                 <div className="auth-alert">

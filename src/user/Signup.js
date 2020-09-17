@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Layout from '../core/Layout';
 import { signup } from '../auth';
 import Menu from '../core/Menu';
-import Navbar from '../core/Navbar';
 import Footer from '../core/Footer'
 
 
@@ -108,7 +107,7 @@ const Signup = () => {
     return (
         <div>
             <Menu />
-            <Navbar />
+
             <div className='registerPage'>
 
                 <div className="auth-alert">
