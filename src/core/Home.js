@@ -306,30 +306,20 @@ const Home = (props) => {
 
       </div>
       <section className="best-sellers">
-        <div className="mytabs">
-          <div className="sellers-title">
-            <h3>Best Sellers</h3>
-          </div>
-          <input type="radio" name="mytabs" id="tvs" />
-          <label htmlFor="tvs">Televisions</label>
+       <div className="sellers-header">
 
-          <input type="radio" name="mytabs" id="watches" />
-          <label htmlFor="watches">Watches</label>
+          <div className="sellers-title">             <h3>Best Sellers</h3>  </div>
+
+        </div>
+      
 
 
-          <input type="radio" name="mytabs" id="accessories" />
-          <label htmlFor="accessories">Accessories</label>
-
-          <input type="radio" name="mytabs" id="phones" defaultChecked="checked" />
-          <label htmlFor="phones">Phones & Tablets</label>
-
-
-          <div className="tab">
+          {/* <div className="tab"> */}
             <div className="content-container">
               {renderCardBySell}
             </div>
-          </div>
-        </div>
+          {/* </div> */}
+        {/* </div> */}
       </section>
 
 
