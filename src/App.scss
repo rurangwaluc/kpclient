@@ -2325,6 +2325,98 @@ body {
 
 }
 
+.wishPage {
+
+  width: 42rem;
+  height: 11rem;
+  display: flex;
+  margin: 2rem 0;
+  justify-content: space-between;
+
+  &-input-group {
+    input {
+      border-radius: 1.5rem;
+    }
+  }
+
+
+
+  // border: .1px solid #d4d4d4;
+
+  &:hover {
+    background: #f8f6f6;
+  }
+
+  &-image {
+
+    img {
+      width: 9rem;
+      height: 7rem;
+      margin: 1.5rem 1rem;
+      // padding: .5rem;
+    }
+  }
+
+  &-title {
+    width: 5rem;
+    margin: 1.5rem 1rem;
+    padding: .5rem;
+    padding-top: 2rem;
+    text-decoration: none;
+
+    a {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #1A1C1D;
+    }
+
+  }
+
+  &-buttons {
+    width: 13rem;
+    margin: 1.5rem 1rem;
+    padding: .5rem;
+    // padding-top: 2rem;
+
+    &-btns {
+
+      display: flex;
+      justify-content: space-between;
+      // padding-top: 1rem;
+
+      // .wishPage-btns-update {
+      // width: 8.6rem;
+      // }
+
+
+    }
+  }
+
+}
+
+.wishPage-btns-remove {
+  // margin-top: 0;
+  padding: 1rem;
+  background: none;
+  font-size: 2.5rem;
+  outline: none;
+  border: none;
+}
+
+.noItemsMessage {
+  width: 800px;
+  margin: 10rem;
+  padding: 10rem;
+
+  h2 {
+    text-align: center;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
 .cartPage-btns-remove {
   outline: none;
   border: none;

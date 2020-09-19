@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import ShowImage from './Tools/ShowImage';
 import moment from 'moment';
-import { addItem, updateItem, removeItem } from './cartHelpers';
+import { addItem,addWishlistItem, updateItem, removeItem } from './cartHelpers';
 
 const Card = ({
   product,
   showViewProductButton = true,
   showAddToCartButton = true,
+  showAddToWishlistButton = true,
   cartUpdate = false,
   showRemoveProductButton = false,
   setRun = f => f,
@@ -33,16 +34,33 @@ const Card = ({
     // console.log('added');
     addItem(product, setRedirect(true));
   };
+  const addToWishlist = () => {
+    // console.log('added');
+    addWishlistItem(product, setRedirect(true));
+  };
 
   const shouldRedirect = redirect => {
     if (redirect) {
       return <Redirect to="/cart" />;
     }
   };
+  const shouldWishlistRedirect = redirect => {
+    if (redirect) {
+      return <Redirect to="/wishlist" />;
+    }
+  };
   const showAddToCart = showAddToCartButton => {
     return (
       showAddToCartButton && (
         <button onClick={addToCart} id='bt' className="btn btn-outline-secondary mt-2 mb-2">Add to cart</button>
+      )
+    );
+  };
+  const showAddToWishlist = showAddToWishlistButton => {
+    return (
+      showAddToWishlistButton && (
+        <button onClick={addToWishlist} id='bt'
+         className="btn btn-outline-secondary mt-2 mb-2">Add to WishList</button>
       )
     );
   };
@@ -146,7 +164,7 @@ const Card = ({
             <Link to="/cart" onClick={addToCart} title="Add to Cart"><i className="fas fa-cart-plus"></i>Cart</Link>
           </div>
           <div className="add-to-wishlist">
-            <Link to="" title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
+            <Link to="/wishlist" onClick={addToWishlist} title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
           </div>
         </div>
       </div>

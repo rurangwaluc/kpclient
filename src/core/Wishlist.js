@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from './Layout';
-import { getCart } from './cartHelpers';
-import Card from './Card';
+import { getWishlist } from './cartHelpers';
+import Card from './wishCard';
 import Checkout from './Checkout';
 import Menu from './Menu';
 import Footer from './Footer';
@@ -12,12 +12,12 @@ const Cart = () => {
     const [run, setRun] = useState(false);
 
     useEffect(() => {
-        setItems(getCart());
+        setItems(getWishlist());
     }, [run]);
 
     const showItems = items => {
         return (
-            <div>
+            <div className='row'>
                 {/* <div className="Cart-header">
 
                     <div className="Cart-title"> <h3>You Have {`${items.length}`} Items In Your Cart</h3></div>
@@ -25,26 +25,27 @@ const Cart = () => {
 
 
                 {items.map((product, i) => (
+                   <div key={i} className=" col-md-4 col-sm-12 mb-3">
                     <Card
-                        key={i}
+                      
                         product={product}
-                        showAddToCartButton={false}
-                        cartUpdate={true}
+                        showAddToCartButton={true}
+                        cartUpdate={false}
                         showRemoveProductButton={true}
                         setRun={setRun}
                         run={run}
                     />
+                     </div>
                 ))}
             </div>
         );
     };
 
     const noItemsMessage = () => (
-
-        <div className="noItemsMessage">
+            <div className="noItemsMessage">
 
         <h2>
-            Your cart is empty. <br /> <Link to="/shop">Continue shopping</Link>
+            Your WishList is empty. <br /> <Link to="/shop">Update your WishList shopping</Link>
         </h2>
         </div>
     );
@@ -58,10 +59,6 @@ const Cart = () => {
                 <div className="productCart-row">
                     <div className="">{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
 
-                    <div className="mt-5">
-
-                        <Checkout products={items} setRun={setRun} run={run} />
-                    </div>
                 </div>
             </div>
             <Footer />

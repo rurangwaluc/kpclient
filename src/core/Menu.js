@@ -176,7 +176,7 @@ const Menu = ({ history }) => (
                         <li>  <Link
                             style={isActive(history, "/shop")}
                             to="/shop" >Shop</Link> </li>
-                        <li> <Link to="/wishList" title="WishList"><i className="far fa-heart"></i></Link></li>
+                        <li> <Link to="/wishlist" title="WishList"><i className="far fa-heart"></i></Link></li>
 
 
                         <li>

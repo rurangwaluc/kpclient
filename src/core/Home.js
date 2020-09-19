@@ -7,7 +7,7 @@ import Icon from '@ant-design/icons';
 import ShowImage from './Tools/ShowImage';
 import { getProducts, getCategories, getFilteredProducts } from "./apiCore";
 import Checkbox from "./Checkbox";
-import { addItem } from './cartHelpers';
+import { addItem, addWishlistItem } from './cartHelpers';
 import Menu from './Menu'
 import Footer from './Footer'
 import ImageSlider from './Tools/ImageSlider'
@@ -143,6 +143,10 @@ const Home = (props) => {
       addItem(product, setRedirect(true));
       console.log('added');
     };
+    const addToWishlist = () => {
+      addWishlistItem(product, setRedirect(true));
+      console.log('added');
+    };
     return <div key={index} className="daily-product">
 
 
@@ -170,7 +174,7 @@ const Home = (props) => {
           <Link to="/cart" onClick={addToCart} title="Add to Cart"><i className="fas fa-cart-plus"></i>Cart</Link>
         </div>
         <div className="add-to-wishlist">
-          <Link to="" title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
+          <Link to="/wishlist" onClick={addToWishlist} title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
         </div>
       </div>
     </div>
@@ -183,7 +187,10 @@ const Home = (props) => {
       addItem(product, setRedirect(true));
       console.log('added');
     };
-
+const addToWishlist = () => {
+      addWishlistItem(product, setRedirect(true));
+      console.log('added');
+    };
     return <div key={index} className="product-item">
       <div className="product-image">
         <Link to={`/product/${product._id}`}>
@@ -214,7 +221,7 @@ const Home = (props) => {
             <Link to="/cart" onClick={addToCart} title="Add to Cart"><i className="fas fa-cart-plus"></i>Cart</Link>
           </div>
           <div className="add-to-wishlist">
-            <Link to="" title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
+            <Link to="/wishlist" onClick={addToWishlist} title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
           </div>
         </div>
       </div>
