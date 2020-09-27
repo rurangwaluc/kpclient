@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 import { Col, Row, Button } from 'antd';
 import Icon from '@ant-design/icons';
 import ShowImage from './Tools/ShowImage';
-import { getProducts, getCategories, getFilteredProducts } from "./apiCore";
+import { getProducts,getProductsBySell,getDailyProducts, getCategories, getFilteredProducts } from "./apiCore";
 import Checkbox from "./Checkbox";
-import { addItem } from './cartHelpers';
+import { addItem, addWishlistItem } from './cartHelpers';
 import Menu from './Menu'
 import Footer from './Footer'
 import ImageSlider from './Tools/ImageSlider'
@@ -19,6 +19,9 @@ import img6 from '../img/c.jpg'
 import img7 from '../img/e.jpg'
 import img8 from '../img/e.jpg'
 import img9 from '../img/f.jpg'
+import asset from '../img/big-ad-1.jpg'
+import smallAd from '../img/small-ad.jpg'
+import partner from '../img/oppo.png'
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -39,6 +42,7 @@ const Home = (props) => {
   const [Product, setProduct] = useState([]);
   const [redirect, setRedirect] = useState(false);
   const [productsByArrival, setProductsByArrival] = useState([]);
+  const [productsByDay, setProductsByDay] = useState([]);
   const [productsBySell, setProductsBySell] = useState([]);
   const [error, setError] = useState(false);
   // const [filteredResults, setFilteredResults] = useState([]);
@@ -69,8 +73,16 @@ const Home = (props) => {
       }
 
     });
+  }; 
+ const loadProductsByDay = () => {
+    getDailyProducts('price').then(data => {
+      if (data.error) {
+        setError(data.error);
+      } else {
+        setProductsByDay(data);
+      }
+    });
   };
-
 
   const loadProductsByArrival = () => {
     getProducts('createdAt').then(data => {
@@ -84,7 +96,7 @@ const Home = (props) => {
   };
 
   const loadProductsBySell = () => {
-    getProducts('price').then(data => {
+    getProductsBySell('price').then(data => {
       if (data.error) {
         setError(data.error);
       } else {
@@ -95,8 +107,7 @@ const Home = (props) => {
 
 
   useEffect(() => {
-    loadProductsBySell();
-    loadProductsByArrival();
+  
     init();
     loadFilteredResults(Skip, Limit, myFilters.filters);
     const variables = {
@@ -105,7 +116,9 @@ const Home = (props) => {
     }
 
     getProducts(variables)
-
+    loadProductsByDay();
+    loadProductsByArrival();
+    loadProductsBySell();
   }, [])
 
   const handleFilters = (filters, filterBy) => {
@@ -135,12 +148,66 @@ const Home = (props) => {
     setSkip(skip)
   }
 
+  const renderCardByDay = productsByDay.map((product, index) => {
+
+
+
+    const addToCart = () => {
+      addItem(product, setRedirect(true));
+      console.log('added');
+    };
+    const addToWishlist = () => {
+      addWishlistItem(product, setRedirect(true));
+      console.log('added');
+    };
+    return <ul key={index}  id="autoWidth" className="cS-hidden">
+     <li className="item-a">
+       <div className="daily-product">
+           <Link to="" className="daily-product-category">{product.brand}</Link>
+           <div className="product-info-container">
+
+            <div className="daily-product-description">
+              <Link to={`/product/${product._id}`}>
+                {product.title}
+              </Link>
+            </div>
+            <div className="product-image">
+              <Link to={`/product/${product._id}`}>
+                <ShowImage images={product.images} />
+              </Link>
+            </div>
+            <div className="price-container">
+              <div className="view-price"><span>{`Rwf ${product.price}`}</span></div>
+              {/* <button onClick={addToCart} className="add-to-cart"><i className="fas fa-cart-plus"></i></button> */}
+            </div>
+          </div>
+
+          <div className="hover-container">
+            <div className="add-to-compare">
+              <Link to="/cart" onClick={addToCart} title="Add to Cart"><i className="fas fa-cart-plus"></i>Cart</Link>
+            </div>
+            <div className="add-to-wishlist">
+              <Link to="/wishlist" onClick={addToWishlist} title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
+            </div>
+          </div>
+       </div>
+     </li>
+
+     
+
+    </ul>
+
+  })
   const renderCardByArrival = productsByArrival.map((product, index) => {
 
 
 
     const addToCart = () => {
       addItem(product, setRedirect(true));
+      console.log('added');
+    };
+    const addToWishlist = () => {
+      addWishlistItem(product, setRedirect(true));
       console.log('added');
     };
     return <div key={index} className="daily-product">
@@ -170,7 +237,7 @@ const Home = (props) => {
           <Link to="/cart" onClick={addToCart} title="Add to Cart"><i className="fas fa-cart-plus"></i>Cart</Link>
         </div>
         <div className="add-to-wishlist">
-          <Link to="" title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
+          <Link to="/wishlist" onClick={addToWishlist} title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
         </div>
       </div>
     </div>
@@ -183,7 +250,10 @@ const Home = (props) => {
       addItem(product, setRedirect(true));
       console.log('added');
     };
-
+const addToWishlist = () => {
+      addWishlistItem(product, setRedirect(true));
+      console.log('added');
+    };
     return <div key={index} className="product-item">
       <div className="product-image">
         <Link to={`/product/${product._id}`}>
@@ -214,7 +284,7 @@ const Home = (props) => {
             <Link to="/cart" onClick={addToCart} title="Add to Cart"><i className="fas fa-cart-plus"></i>Cart</Link>
           </div>
           <div className="add-to-wishlist">
-            <Link to="" title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
+            <Link to="/wishlist" onClick={addToWishlist} title="Add to WishList"><i className="far fa-heart"></i>WishList</Link>
           </div>
         </div>
       </div>
@@ -233,37 +303,12 @@ const Home = (props) => {
 
       <div className="main-home">
 
-        <section className="categories">
-          {/* <h2><i className="fas fa-bars"></i>Categories</h2>
-          <div className="main-home-categories">
-
-            <Checkbox
-              categories={categories}
-              handleFilters={filters =>
-                handleFilters(filters, "category")
-              }
-            />
-
-
-
-          </div> */}
-          {/* <a href=""><div className="other-ad"></div></a>
-          <a href=""><div className="other-ad"></div></a> */}
-        </section>
         <section className='slider-info'>
           <div className="slide-container">
-            {/* <div className="slides"> */}
+        
             <ImageSlider />
 
-            {/* </div> */}
-            {/* <div className="slide-controls">
-              <button id="prev-btn">
-                <i className="fas fa-chevron-left"></i>
-              </button>
-              <button id="next-btn">
-                <i className="fas fa-chevron-right"></i>
-              </button>
-            </div> */}
+          
           </div>
 
           <div className="other-categories">
@@ -291,6 +336,23 @@ const Home = (props) => {
         </section>
       </div>
 
+<section className="daily-deals">
+   <div className="daily-deals-header">
+    
+      <div className="daily-deals-title"> <h3>Deals Of The Day</h3></div>
+     <div className="countdown">Ends in: 00:00:00</div>
+   </div>
+     <section className="slider">
+     {renderCardByDay}
+   </section>
+</section>
+ <section className="big-ad1-container">
+   <div className="big-ad1">
+     <a href=""><img src={asset} alt=""/></a>
+   </div>
+ </section>
+ 
+
       <div className="new-arrivals">
         <div className="arrivals-header">
 
@@ -305,6 +367,13 @@ const Home = (props) => {
         </div>
 
       </div>
+       <section className="big-ad4">
+   
+        <div className="big-ad-image"><a href=""><img src={smallAd} alt=""/></a></div>
+        <div className="big-ad-image"><a href=""><img src={smallAd} alt=""/></a></div>
+     
+ 
+       </section>
       <section className="best-sellers">
        <div className="sellers-header">
 
@@ -323,6 +392,51 @@ const Home = (props) => {
       </section>
 
 
+      <section className="big-ad2-container">
+        <div className="big-ad2">
+          <a href=""><img src={asset} alt=""/></a>
+        </div>
+      </section>
+      {/* Parteners */}
+
+    <section className="partners">
+      <div className="partners-header">
+        <div className="partners-title">
+          <h3>Partners</h3>
+        </div>
+      </div>
+      <div className="partners-logo">
+        <div className="logo">
+          <img src={partner} alt=""/>
+        </div>
+      </div>
+    </section>
+    
+    <section className="trust">
+      <div className="trust-content">
+        <div className="content">
+          <div className="content-icon"><i className="fas fa-truck"></i></div>
+          <div className="content-text">
+            <p>FREE SHIPPING</p>
+            <p>free shipping on all products.</p>
+          </div>
+        </div>
+        <div className="content">
+          <div className="content-icon"><i className="fas fa-wallet"></i></div>
+          <div className="content-text">
+            <p>trusted provider</p>
+            <p>trusted by our customers.</p>
+          </div>
+        </div>
+        <div className="content">
+          <div className="content-icon"><i className="fas fa-headset"></i></div>
+          <div className="content-text">
+            <p>online support 24/7</p>
+            <p>you can call or text us at any time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
       <Footer />
     </div>
 

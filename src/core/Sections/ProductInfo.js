@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Descriptions } from 'antd';
+import moment from 'moment';
 
 const ProductInfo = (props) => {
 
@@ -24,14 +25,19 @@ const ProductInfo = (props) => {
                 <p>Availability: <span>{Product.quantity} in stock</span> </p>
 
             </div>
-            <div className="main-content-info-list">
-
-                <p> <strong>Price</strong> : Rwf {Product.price}</p>
+               <div className="main-content-info-list">
+                <p >Added {moment(Product.createdAt).fromNow()}</p>
+                <p>Rwf {Product.price}</p>
 
                 <ul>
 
-                    <li ><strong>Brand</strong> : {Product.brand}</li>
-                    <li ><strong>Short Description</strong> : {Product.short_description}</li>
+                    <li > {Product.brand}</li>
+                    {/* <li > {Product.sold}</li> */}
+
+                    <div className="mt-4">
+                    <li > {Product.short_description}</li>
+
+                    </div>
                 </ul>
             </div>
 

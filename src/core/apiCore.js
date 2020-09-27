@@ -3,8 +3,27 @@ import {
 } from "../config";
 import queryString from "query-string";
 
+export const getDailyProducts = (sortBy) => {
+  return fetch(`${API}/getProducts?sortBy=${sortBy}&order=asc&limit=5`, {
+      method: "GET"
+    })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+
 export const getProducts = sortBy => {
-  return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=15`, {
+  return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=10`, {
+      method: "GET"
+    })
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => console.log(err));
+};
+export const getProductsBySell = sortBy => {
+  return fetch(`${API}/productBySell?sortBy=${sortBy}&order=desc&limit=6`, {
       method: "GET"
     })
     .then(response => {

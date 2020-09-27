@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 import img1 from '../img/1.jpg'
@@ -7,6 +7,14 @@ import ceo from '../img/ceo.jpg'
 import cto from '../img/cto.jpg'
 
 const Footer = () => {
+
+    const [date , setDate] = useState();
+
+    const getYear = () =>  setDate(new Date().getFullYear());
+
+      useEffect(() => {
+        getYear();
+    }, [])
 
   return (
     <div >
@@ -47,8 +55,8 @@ const Footer = () => {
             </div> */}
             <div className="insta-posts">
               <h3>Our Instagram Latest Posts</h3>
-              <div className="images">
-                <div className="image">
+              {/* <div className="images"> */}
+                {/* <div className="image">
 
                   <Link to="" ><img src={cto} alt="" /> <i className="fab fa-instagram"></i></Link>
                 </div>
@@ -81,7 +89,12 @@ const Footer = () => {
                   <Link to="" ><img src={cto} alt="" /> <i className="fab fa-instagram"></i></Link>
                 </div>
 
-              </div>
+               */}
+             
+
+              {/* </div> */}
+               <div className="powr-instagram-feed" id="0f360dc5_1600678726"></div>
+              <script src="https://www.powr.io/powr.js?platform=react"></script>
             </div>
           </div>
           <div className="social-info">
@@ -93,14 +106,12 @@ const Footer = () => {
             </div>
             <div className="owners">
               <p className="data">
-                &copy; Kigali Phones Center - <script>
-                  document.write(new Date().getFullYear());
-          </script> All Rights Reserved
+                &copy; Kigali Phones Center - {date} - All Rights Reserved
         </p>
             </div>
             <div className="footer-copyright">
               <p id="copy">
-                Developed By <Link to="www.trelucsolutions.com" target="_blank">Treluc</Link>
+                Developed By <Link to="www.trelucglobal.com" target="_blank">Treluc</Link>
               </p>
             </div>
 

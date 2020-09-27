@@ -19,6 +19,7 @@ import AddProduct from './admin/AddProduct';
 import DailyDeals from './core/DailyDeals';
 import Product from './core/Product';
 import Cart from './core/Cart';
+import Wishlist from './core/Wishlist';
 import Shop from './core/Shop';
 import Orders from './admin/Orders';
 import Profile from './user/Profile';
@@ -45,6 +46,7 @@ const Routes = () => {
         <AdminRoute path="/create/product" exact component={AddProduct} />
         <Route path="/product/:productId" exact component={Product} />
         <Route path="/cart" exact component={Cart} />
+        <Route path="/wishlist" exact component={Wishlist} />
         <Route path="/shop" exact component={Shop} />
         <AdminRoute path="/admin/orders" exact component={Orders} />
         <PrivateRoute path="/profile/:userId" exact component={Profile} />
