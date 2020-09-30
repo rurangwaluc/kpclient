@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth";
-import { itemTotal } from "./cartHelpers";
+import { itemTotal,totalItem } from "./cartHelpers";
 import img1 from '../img/11.2 shopping-bag.svg.svg'
 import Search from './Search'
 
@@ -172,11 +172,22 @@ const Menu = ({ history }) => (
 
 
                     <ul className="icons">
-                        <li>  <Link to="/" >Home</Link> </li>
+                        <li>  <Link
+                        
+                         to="/"
+                         style={isActive(history, "/")}
+                          >Home</Link> </li>
                         <li>  <Link
                             style={isActive(history, "/shop")}
                             to="/shop" >Shop</Link> </li>
-                        <li> <Link to="/wishlist" title="WishList"><i className="far fa-heart"></i></Link></li>
+                        <li> <Link 
+                        
+                        style={isActive(history, "/wishlist")}
+                        to="/wishlist" 
+                        title="WishList">
+                        <i className="far fa-heart"></i>
+                        <sup> <span className='item-count '>{totalItem()}</span></sup>
+                        </Link></li>
 
 
                         <li>

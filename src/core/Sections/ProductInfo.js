@@ -26,7 +26,6 @@ const ProductInfo = (props) => {
 
             </div>
                <div className="main-content-info-list">
-                <p >Added {moment(Product.createdAt).fromNow()}</p>
                 <p>Rwf {Product.price}</p>
 
                 <ul>

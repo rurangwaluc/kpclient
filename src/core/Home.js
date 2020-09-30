@@ -340,7 +340,7 @@ const addToWishlist = () => {
    <div className="daily-deals-header">
     
       <div className="daily-deals-title"> <h3>Deals Of The Day</h3></div>
-     <div className="countdown">Ends in: 00:00:00</div>
+     {/* <div className="countdown">Ends in: 00:00:00</div> */}
    </div>
      <section className="slider">
      {renderCardByDay}
